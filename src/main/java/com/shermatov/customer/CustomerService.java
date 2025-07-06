@@ -76,8 +76,7 @@ public class CustomerService {
             customer.setEmail(updateRequest.email());
             changes = true;
         }
-
-
+        
         if(!changes) {
             throw new RequestValidationException("no data changes found");
         }
