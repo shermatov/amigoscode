@@ -1,10 +1,11 @@
+version: '3.9'
 
 services:
   db:
     image: postgres
     container_name: postgres
     environment:
-      POSTGRES_DB: amigoscode
+      POSTGRES_DB: customer
       POSTGRES_USER: shermatov
       POSTGRES_PASSWORD: superSecret
       PGDATA: /data/postgres
@@ -19,6 +20,6 @@ services:
 networks:
   db:
     driver: bridge
+
 volumes:
   db:
-
