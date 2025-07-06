@@ -28,7 +28,7 @@ public class AmigoscodeApplication {
 			Customer customer = new Customer(
 					firstName + " " + lastName,
 					firstName + "_" + lastName + "@shermatov.com",
-					random.nextInt(100) + 1
+					random.nextInt(100) + 2
 
 			);
 
