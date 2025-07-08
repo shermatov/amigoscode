@@ -30,7 +30,7 @@ public class CustomerJDBCDAOService implements CustomerDAO {
 
     @Override
     public void insertCustomer(Customer customer) {
-
+        var sql = "INSERT INTO customer (first_name, last_name) VALUES (?, ?)";
     }
 
     @Override
