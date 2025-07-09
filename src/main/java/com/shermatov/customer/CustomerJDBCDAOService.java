@@ -103,5 +103,6 @@ public class CustomerJDBCDAOService implements CustomerDAO {
             int result = jdbcTemplate.update(sql, update.getAge(), update.getId());
             System.out.println("jdbcTemplate.update: " + result);
         }
+
     }
 }
