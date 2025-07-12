@@ -2,7 +2,7 @@ package com.shermatov.customer;
 
 import com.shermatov.exception.DuplicateResourceException;
 import com.shermatov.exception.RequestValidationException;
-import com.shermatov.exception.ResourceNotFound;
+import com.shermatov.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +16,19 @@ public class CustomerService {
     public CustomerService(@Qualifier("jpa") CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
-    public List<Customer> getCustomers () {
+    public List<Customer> getAllCustomers () {
         return customerDAO.selectAllCustomers();
     }
 
     public Customer getCustomer(Integer customerID) {
         return customerDAO.selectCustomerById(customerID)
                 .orElseThrow(
-                        () -> new ResourceNotFound("Customer with [%s] not found".formatted(customerID)
+                        () -> new ResourceNotFoundException("Customer with [%s] not found".formatted(customerID)
                         )
                 );
 
     }
+
 
     public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
         if(customerDAO.existsCustomerWithEmail(customerRegistrationRequest.email())) {
@@ -44,7 +45,7 @@ public class CustomerService {
 
     public void deleteCustomerWithId(Integer customerID) {
         if(!customerDAO.existsCustomerWithID(customerID)) {
-            throw new ResourceNotFound("Customer with [%s] not found".formatted(customerID));
+            throw new ResourceNotFoundException("Customer with [%s] not found".formatted(customerID));
         }
         customerDAO.deleteCustomerById(customerID);
 
