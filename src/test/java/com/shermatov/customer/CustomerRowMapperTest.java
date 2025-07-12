@@ -28,7 +28,6 @@ class CustomerRowMapperTest {
 
         // Then
         Customer expected = new Customer(1, "John", "john@example.com", 25);
-        assert actual != null;
         assertThat(actual.getId()).isEqualTo(1);
         assertThat(actual.getName()).isEqualTo("John");
         assertThat(actual.getEmail()).isEqualTo("john@example.com");
